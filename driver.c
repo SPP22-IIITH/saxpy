@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     else
         n = DEFAULT_VECTOR_LENGTH;
 
+// Changes as per the problem
     gflops = 2.0 * n * 1e-09;
 
     X = (float *)malloc(n * sizeof(float));
@@ -37,7 +38,11 @@ int main(int argc, char *argv[])
 
     calctime = tock(&calc);
 
-    printf("Gflops: %f\n", gflops / calctime);
+// Changes as per the problem
+    float mem_bw = 8.0*n*1e-09/calctime;
+    printf("Time (in milli-secs) %f\n", calctime*1000);
+    printf("Memory Bandwidth (in GBytes/s): %f\n", mem_bw);
+    printf("Compute Throughput (in GFlops/s): %f\n", gflops / calctime);
     free(X);
     free(Y);
 }
